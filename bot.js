@@ -22,10 +22,15 @@ controller.setupWebserver(process.env.PORT, function(err, webserver) {
 
 controller.on('slash_command', function(bot, message) {
   switch (message.command) {
-  case '/omikuji':
-    var choices = message.text.split(',');
-    var choice = choices[Math.random() * choices.length | 0];
-    bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
+  case '/remind-ja':
+    var reminds = message.text.split(',');
+    var when = reminds[2];
+    switch(when){
+      case '明日':
+        reminds[2] = "tomorrow";
+        break;
+    }
+    bot.replyPrivate(message,"/remind" + reminds + "");
     break;
   }
 });
