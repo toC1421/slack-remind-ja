@@ -25,12 +25,7 @@ controller.on('slash_command', function(bot, message) {
   case '/remind-ja':
     var reminds = message.text.split(',');
     var when = reminds[2];
-    switch(when){
-      case '明日':
-        reminds[2] = "tomorrow";
-        break;
-    }
-    bot.replyPrivate(message,"/remind" + reminds + "");
+    bot.replyPrivate(message,when);
     break;
   }
 });
