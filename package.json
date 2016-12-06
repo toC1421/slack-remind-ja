@@ -1,0 +1,23 @@
+{
+  "name": "remind-ja",
+  "version": "1.0.0",
+  "description": "slackのカスタムコマンド",
+  "main": "bot.js",
+  "dependencies": {
+    "botkit": "^0.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toC1421/slack-remind-ja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toC1421/slack-remind-ja/issues"
+  },
+  "homepage": "https://github.com/toC1421/slack-remind-ja#readme"
+}
