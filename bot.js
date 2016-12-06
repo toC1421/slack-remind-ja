@@ -20,13 +20,6 @@ controller.setupWebserver(process.env.PORT, function(err, webserver) {
   });
 });
 
-bot.api.team.info({}, function(err, res) {
-  controller.storage.teams.save({
-    id: res.team.id
-  }, function(err) {
-  });
-});
-
 controller.on('slash_command', function(bot, message) {
   switch (message.command) {
   case '/omikuji':
