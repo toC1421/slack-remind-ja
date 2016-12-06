@@ -22,7 +22,7 @@ controller.setupWebserver(process.env.PORT, function(err, webserver) {
 
 controller.on('slash_command', function(bot, message) {
   switch (message.command) {
-  case '/remind-ja':
+  case '/remindja':
     var reminds = message.text.split(',');
     var when = reminds[2];
     bot.replyPrivate(message,when);
