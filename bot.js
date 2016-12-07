@@ -1,18 +1,7 @@
-/*var botkit = require('botkit');
-
-var controller = botkit.slackbot({
-  debug: false,
-  json_file_store: './simple_storage/'
-}).configureSlackApp({
-  clientId: process.env.BOTKIT_SLACK_CLIENT_ID,
-  clientSecret: process.env.BOTKIT_SLACK_CLIENT_SECRET,
-  scopes: ['commands']
-});
-*/
 var botkit = require('botkit');
 
-var controller = Botkit.slackbot({
-    debug: false
+var controller = botkit.slackbot({
+    debug: true
 });
 
 
@@ -20,7 +9,7 @@ controller.setupWebserver(3000, function(err, webserver) {
     controller.createWebhookEndpoints(webserver);
 });
 
-controller.on('/remindja', function(bot, message) {
+controller.on('slash_command', function(bot, message) {
     // check message.command
     // and maybe message.text...
     // use EITHER replyPrivate or replyPublic...
