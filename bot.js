@@ -1,23 +1,31 @@
 var botkit = require('botkit');
 
 var controller = botkit.slackbot({
-    debug: true
+  debug: false,
+  json_file_store: './simple_storage/'
+}).configureSlackApp({
+  clientId: process.env.BOTKIT_SLACK_CLIENT_ID,
+  clientSecret: process.env.BOTKIT_SLACK_CLIENT_SECRET,
+  scopes: ['commands']
 });
 
-
-controller.setupWebserver(3000, function(err, webserver) {
-    controller.createWebhookEndpoints(webserver);
+controller.setupWebserver(process.env.PORT, function(err, webserver) {
+  controller.createWebhookEndpoints(controller.webserver);
+  controller.createOauthEndpoints(controller.webserver, function(err, req, res) {
+    if (err) {
+      res.status(500).send('Error: ' + JSON.stringify(err));
+    } else {
+      res.send('Success');
+    }
+  });
 });
 
 controller.on('slash_command', function(bot, message) {
-    // check message.command
-    // and maybe message.text...
-    // use EITHER replyPrivate or replyPublic...
-    bot.replyPrivate(message, 'This is a private reply to the ' + message.command + ' slash command!');
-
-    // and then continue to use replyPublicDelayed or replyPrivateDelayed
-    bot.replyPublicDelayed(message, 'This is a public reply to the ' + message.command + ' slash command!');
-
-    bot.replyPrivateDelayed(message, ':dash:');
-
+  switch (message.command) {
+  case '/remindja':
+    var choices = message.text.split(',');
+    var choice = choices[Math.random() * choices.length | 0];
+    bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
+    break;
+  }
 });
