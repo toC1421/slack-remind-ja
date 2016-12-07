@@ -24,12 +24,11 @@ controller.on('slash_command', function(bot, message) {
   if (message.token !== token) {
     return bot.res.send(401, 'Unauthorized');
   }
-
   switch (message.command) {
   case '/remindja':
     var choices = message.text.split(',');
     var choice = choices[Math.random() * choices.length | 0];
-    bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
+    bot.replyPrivate(message, `/remind #general hi today`);
     break;
   }
 });
