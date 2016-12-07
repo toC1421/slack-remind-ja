@@ -28,7 +28,7 @@ controller.on('slash_command', function(bot, message) {
   case '/remindja':
     var choices = message.text.split(',');
     var choice = choices[Math.random() * choices.length | 0];
-    bot.replyPublic(message, `/remind #general hi today`);
+    bot.replyPublic(message, `\/remind #general hi today`);
     break;
   }
 });
