@@ -28,7 +28,7 @@ controller.on('slash_command', function(bot, message) {
     case '/remindja':
       var reminds = message.text.split(' ');
       var when = reminds[2];
-      bot.replyPrivate(message, when);
+      bot.replyPrivate(message, 'hoge');
       break;
     /*
     case '/curl':
