@@ -20,6 +20,17 @@ controller.setupWebserver(process.env.PORT,function(err,webserver){
   });
 });
 
+controller.on('slash_command', function(bot, message){
+  switch (message.command) {
+    case '/remindja':
+      var choices = message.text.split(',');
+      var choice = choices[Math.random() * choices.length | 0];
+      bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
+      break;
+  }
+});
+
+/*
 controller.on('slash_command', function(bot, message) {
   if (message.token !== token) {
     return bot.res.send(401, 'Unauthorized');
@@ -32,3 +43,4 @@ controller.on('slash_command', function(bot, message) {
     break;
   }
 });
+*/
