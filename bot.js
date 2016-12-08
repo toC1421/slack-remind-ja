@@ -26,9 +26,9 @@ controller.on('slash_command', function(bot, message) {
   }
   switch (message.command) {
     case '/remindja':
-      var choices = message.text.split(',');
-      var choice = choices[Math.random() * choices.length | 0];
-      bot.say(message, `/remind #general hi today`);
+      var reminds = message.text.split(' ');
+      var when = reminds[2];
+      bot.replyPrivate(message, when);
       break;
     /*
     case '/curl':
