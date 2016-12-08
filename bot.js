@@ -26,14 +26,9 @@ controller.on('slash_command', function(bot, message) {
   }
   switch (message.command) {
     case '/remindja':
-      var reminds = message.text.split(' ');
-      var when = reminds[2];
+      //var reminds = message.text.split(' ');
+      //var when = reminds[2];
       bot.replyPrivate(message, 'hoge');
-      break;
-    /*
-    case '/curl':
-      var uri = message.text;
-      break;
-    */
+    break;
   }
 });
