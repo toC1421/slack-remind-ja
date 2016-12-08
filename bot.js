@@ -25,10 +25,15 @@ controller.on('slash_command', function(bot, message) {
     return bot.res.send(401, 'Unauthorized');
   }
   switch (message.command) {
-  case '/remindja':
-    var choices = message.text.split(',');
-    var choice = choices[Math.random() * choices.length | 0];
-    bot.replyPublic(message, `\/remind #general hi today`);
-    break;
+    case '/remindja':
+      var choices = message.text.split(',');
+      var choice = choices[Math.random() * choices.length | 0];
+      bot.reply(message, `\/remind #general hi today`);
+      break;
+    /*
+    case '/curl':
+      var uri = message.text;
+      break;
+    */
   }
 });
