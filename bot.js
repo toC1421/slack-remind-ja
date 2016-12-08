@@ -21,6 +21,9 @@ controller.setupWebserver(process.env.PORT,function(err,webserver){
 });
 
 controller.on('slash_command', function(bot, message){
+  if (message.token !== token) {
+    return bot.res.send(401, 'Unauthorized');
+  }
   switch (message.command) {
     case '/remindja':
       var choices = message.text.split(',');
