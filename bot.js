@@ -29,7 +29,7 @@ controller.on('slash_command', function(bot, message) {
   case '/remindja':
     var choices = message.text.split(',');
     var choice = choices[Math.random() * choices.length | 0];
-    bot.replyPrivate(message, '/remind #team-alpha to update the project status every Monday at 9am');
+    bot.replyPrivate(message, '/remind #general to update the project status every Monday at 9am');
     break;
   }
 });
